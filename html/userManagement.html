@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./userManagement.css">
+    <title>Document</title>
+</head>
+<body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <div class="main">
+            <h1>User Management</h1>
+            <div class="nav">
+                <div class="leftnav">
+                    
+                    <input class="search-bar" type="text" placeholder="Search Items ...">
+                    
+                    <div class="dropdown-container">
+                        <label for="permissions" class="dropdown-label">Permissions</label>
+                        <select id="permissions" class="dropdown-select">
+                          <option value="all" selected>All </option>
+                          <option value="admin">Admin</option>
+                          <option value="editor">Editor</option>
+                          <option value="viewer">Viewer</option>
+                    
+                        </select>
+                      </div>
+                      <div class="dropdown-container">
+                        <label for="permissions" class="dropdown-label">Joined</label>
+                        <select id="permissions" class="dropdown-select">
+                          <option value="all">Anytime</option>
+                          <option value="admin">Admin</option>
+                          <option value="editor">Editor</option>
+                          <option value="viewer">Viewer</option>
+                        </select>
+                      </div>
+                      <div class="navicon-container">
+                    <img class="navicon" src="./image/Category.png" alt="">
+                </div>
+              </div>   
+                <div class="rightnav">
+                  <div class="navicon-container">
+                    <img class="navicon" src="./image/More Square.png" alt="">
+                  </div>
+                    <button class="export">Export</button>
+                    <button class="newuser">+ new user</button>
+                </div>
+           </div>
+        </div>
+        <div class="table-container">
+          <table class="user-table">
+            <thead>
+              <tr>
+                <th><input type="checkbox"></th>
+                <th>Full Name</th>
+                <th>Email Address</th>
+                <th>Location</th>
+                <th>Joined</th>
+                <th>Permissions</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>Leslie Maya</td>
+                <td>leslie@gmail.com</td>
+                <td>Los Angeles, CA</td>
+                <td>October 2, 2010</td>
+                <td><span class="badge admin">Admin</span></td>
+                <td><span class="more-options">...</span></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>Josie Deck</td>
+                <td>josie@gmail.com</td>
+                <td>Cheyenne, WY</td>
+                <td>October 3, 2011</td>
+                <td><span class="badge admin">Admin</span></td>
+                <td><span class="more-options">...</span></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>Josie Deck</td>
+                <td>josie@gmail.com</td>
+                <td>Cheyenne, WY</td>
+                <td>October 3, 2011</td>
+                <td><span class="badge contributor">contributor</span></td>
+                <td><span class="more-options">...</span></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>Josie Deck</td>
+                <td>josie@gmail.com</td>
+                <td>Cheyenne, WY</td>
+                <td>October 3, 2011</td>
+                <td><span class="badge viewer">viewer</span></td>
+                <td><span class="more-options">...</span></td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        
+          <!-- Pagination controls -->
+          <div class="pagination">
+            <span class="page-number active">1</span>
+            <span class="page-number">2</span>
+            <span class="page-number">3</span>
+            <span class="page-number">4</span>
+            <span class="page-number">5</span>
+            <span class="more-pages">...</span>
+            <span class="page-number">10</span>
+            <button class="next-page">></button>
+          </div>
+        
+          <!-- Rows per page dropdown -->
+          <div class="rows-per-page">
+            Show:
+            <select>
+              <option value="10">10 rows</option>
+              <option value="20">20 rows</option>
+              <option value="30">30 rows</option>
+            </select>
+          </div>
+        </div>
+        
+
+    </main>
+</body>
+</html>

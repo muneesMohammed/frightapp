@@ -1,5 +1,5 @@
 import LoginForm from './components/login/login';
-import AddUser from './components/AddUserForm/AddUserForm';
+import UserManagement from './components/UserManagement/UserManagement';
 import './App.css';
 import React from 'react';
 
@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/add-user" element={<AddUser />} />
+        <Route path="/UserManagement" element={<UserManagement />} />
       </Routes>
     </Router>
   );

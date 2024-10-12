@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <link rel="stylesheet" href="./userManagement2.css">
+    
+    <link href="./uicons-regular-rounded-2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="app-name">Untitled UI</h1>
+                <span class="version">v4.0</span>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><i class="fi fi-rr-dashboard-panel"></i><a href="#">Dashboard</a></li>
+                    <li><i class="fi fi-rr-usd-circle"></i><a href="#">Finance</a></li>
+                    <li><i class="fi fi-rr-target-audience"></i><a href="#">CRM</a></li>
+                    <li><i class="fi fi-rr-plane-departure"></i><a href="#">Air</a></li>
+                    <li><i class="fi fi-rr-ship"></i><a href="#">Ocean</a></li>
+                    <li><i class="fi fi-rr-truck-check"></i><a href="#">Land</a></li>
+                    <li><i class="fi fi-rr-benefit-porcent"></i><a href="#">Sales</a></li>
+                    <li><i class="fi fi-rr-envelope-dot"></i><a href="#">Notifications <span class="notification-count">4</span></a></li>
+                    <li><i class="fi fi-rr-users-gear"></i><a href="#">User Management</a></li>
+                    <li><i class="fi fi-rr-user-key"></i><a href="#">Security & Access</a></li>
+                    <li><i class="fi fi-rr-payroll-check"></i><a href="#">Payments</a></li>
+                    <li><i class="fi fi-rr-cloud-download"></i><a href="#">Import Data</a></li>
+                    <li><i class="fi fi-rr-cloud-upload"></i><a href="#">Export Data</a></li>
+                    <li><i class="fi fi-rr-back-up"></i><a href="#">Database</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div><i class="fi fi-rr-settings"></i><a href="#">Settings</a></div>
+                <div><i class="fi fi-rr-document-signed"></i><a href="#">Documentation</a></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="breadcrumbs">
+                    <span>MunnasLogistics</span> &gt; <span class="breadcrumbsactive">User Management</span>
+                </div>
+                <div class="user-info">
+                    <img src="./image/channel-1.jpeg" alt="User Avatar" class="user-avatar">
+                    <span>Florence Shaw</span>
+                </div>
+            </header>
+
+            <div class="content-header">
+                <h2>User Management</h2>
+                <p>Manage your team members and their account permissions here.</p>
+            </div>
+
+            <div class="controls">
+                <div class="usercount">All users <span>44</span></div>
+                <div class="search-filters">
+                    <div class="search-icon">
+                        <i class="fi fi-rr-search"></i>
+                    </div>
+                    <input type="text" class="search-bar" placeholder="Search">
+                    <button class="filter-btn"><i class="fi fi-rr-bars-filter"></i>&ensp;Filters</button>
+                    <button class="add-user-btn">+&ensp;Add User</button>
+                </div>
+            </div>
+
+            <div class="table">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>User Name</th>
+                            <th>Access</th>
+                            <th>Last Active</th>
+                            <th>Date Added</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Florence Shaw</td>
+                            <td>
+                                <span class="badge admin">Admin</span>
+                                <span class="badge data-export">Data Export</span>
+                                <span class="badge data-import">Data Import</span>
+                            </td>
+                            <td>Mar 4, 2024</td>
+                            <td>July 4, 2022</td>
+                            <td><span class="more-options">...</span></td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>Amélie Laurent</td>
+                            <td>
+                                <span class="badge admin">Admin</span>
+                                <span class="badge data-export">Data Export</span>
+                                <span class="badge data-import">Data Import</span>
+                            </td>
+                            <td>Mar 4, 2024</td>
+                            <td>July 4, 2022</td>
+                            <td><span class="more-options">...</span></td>
+                        </tr>
+                        <!-- Additional rows can be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

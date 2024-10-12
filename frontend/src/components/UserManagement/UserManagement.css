@@ -1,0 +1,27 @@
+.user-management-container {
+    padding: 20px;
+  }
+  
+  .add-user-form {
+    margin-bottom: 20px;
+  }
+  
+  .add-user-form input, .add-user-form select {
+    margin: 5px;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table th, .user-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .user-table th {
+    background-color: #f2f2f2;
+  }
+  

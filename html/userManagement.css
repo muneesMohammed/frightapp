@@ -1,0 +1,263 @@
+body{
+  background-color: 919192;
+  font-family: Arial, sans-serif;
+  background-color: #2d2d2d;
+  color: white;
+}
+.main {
+
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 30;
+}
+h1{
+  font-size: 15;
+   color: white;
+} 
+.nav{
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  height: 35px;
+}
+
+.navicon{
+  width: 20px;
+  height: 20px;
+  align-content: center;
+  margin: 5px;
+  margin-top: 7px;
+}
+
+.navicon-container{
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+}
+.navicon-container:hover{
+
+border: 2px solid rgb(160, 159, 159); 
+
+}
+.leftnav{
+  display: flex;
+  align-items: top; 
+}
+
+.search-bar {
+  flex: 1;
+  padding: 7px 16px;;
+  border: 3px solid rgb(160, 159, 159);
+  background-color: #2d2d2d;
+  margin-right: 20px;
+  border-radius: 2px;
+}
+
+.search-bar::placeholder {
+  font-size: 15px;
+  color: white;
+  font-weight:500
+}
+
+
+
+
+
+
+.dropdown-container {
+  /* display: inline-block; */
+  background-color: #2d2d2d;
+  position: relative;
+  margin-right: 20px;
+  padding: 0px 6px;
+  border-radius: 2px;
+  font-size: 15px;
+  border: 3px solid rgb(160, 159, 159);
+  padding-top: 3.5px;
+} 
+
+/* Label for the dropdown */
+.dropdown-label {
+  color: white;
+}
+
+/* Styling the select input */
+.dropdown-select {
+  appearance: none;
+  background-color: #2d2d2d;
+  color:#FB6B03;
+  padding-right: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 2px; 
+  border:0px;
+  outline:0px;
+  text-align: center;
+}
+
+/* Arrow styling for the dropdown */
+.dropdown-container::after {
+  position:absolute;
+  content: '▼';
+  font-size: 12px;
+  color: rgb(224, 224, 224);
+  right: 7px;
+  top: 15px;
+  transform: translateY(-50%);
+  text-align: center;
+  pointer-events: none; 
+}
+
+/* Custom styling for the dropdown options */
+.dropdown-select option {
+  background-color: 919192;
+  color: rgb(255, 255, 255);
+}
+
+.rightnav{
+display: flex;
+}
+.export {
+background-color: transparent;
+color: rgb(255, 255, 255);
+margin-left: 10px;
+border: 2px solid rgb(160, 159, 159);
+font-size: 15;
+padding: 0 15px;
+}
+
+.newuser{
+background-color:  #FB6B03;
+color: rgb(255, 255, 255);
+margin-left: 10px;
+border: none;
+font-size: 15;
+padding: 0 25px;
+border-radius: 3px;
+}
+.newuser:hover{
+background-color:  #FF8B37;
+
+}
+
+
+
+
+
+
+
+
+.table-container {
+margin: 20px;
+border: 1px solid #3a3a3a;
+border-radius: 8px;
+overflow: hidden;
+}
+
+.user-table {
+width: 100%;
+border-collapse: collapse;
+background-color: #333;
+}
+
+.user-table th, .user-table td {
+padding: 12px 16px;
+text-align: left;
+border-bottom: 1px solid #444;
+}
+
+.user-table th {
+background-color: #3a3a3a;
+font-weight: bold;
+}
+
+.user-table tbody tr:hover {
+background-color: #4d4d4d;
+}
+
+.user-table tbody tr td {
+color: #ccc;
+}
+
+.user-table input[type="checkbox"] {
+cursor: pointer;
+}
+
+/* Badge styles */
+.badge {
+padding: 4px 8px;
+border-radius: 4px;
+font-size: 12px;
+font-weight: bold;
+}
+
+.badge.admin {
+background-color: #e74c3c;
+color: white;
+}
+
+.badge.contributor {
+background-color: #3498db;
+color: white;
+}
+
+.badge.viewer {
+background-color: #95a5a6;
+color: white;
+}
+
+/* More options style */
+.more-options {
+cursor: pointer;
+color: #fff;
+font-weight: bold;
+}
+
+/* Pagination */
+.pagination {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+padding: 10px;
+background-color: #3a3a3a;
+border-top: 1px solid #444;
+}
+
+.page-number, .next-page {
+padding: 6px 12px;
+margin-right: 6px;
+background-color: #2d2d2d;
+border-radius: 4px;
+cursor: pointer;
+color: #fff;
+}
+
+.page-number.active {
+background-color: #e67e22;
+}
+
+.more-pages {
+color: #aaa;
+padding-left: 6px;
+}
+
+.next-page {
+background-color: #4d4d4d;
+border: none;
+cursor: pointer;
+}
+
+/* Rows per page dropdown */
+.rows-per-page {
+float: right;
+padding: 10px;
+color: white;
+}
+
+.rows-per-page select {
+padding: 5px;
+background-color: #333;
+color: white;
+border: 1px solid #444;
+border-radius: 4px;
+margin-left: 5px;
+}

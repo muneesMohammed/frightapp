@@ -1,0 +1,97 @@
+
+
+  
+
+  /* Sidebar Styling */
+  .sidebar {
+    width: 250px;
+    background-color: #e6e6e6;
+    padding: 20px;
+    border-right: 1px solid #e0e0e0;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-header .app-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .sidebar-header .version {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .sidebar-menu ul {
+    list-style-type: none;
+  }
+  
+  .sidebar-menu li {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-menu li i {
+    margin-right: 8px;
+    margin-top: 5px;
+    /* color: #575757; */
+  }
+  
+  .sidebar-menu ul li {
+    text-decoration: none;
+    color: #575757;
+    font-size: 13px;                    
+    font-weight: 600;
+    cursor: pointer;
+    margin: 5px 0px;
+  }
+  
+  .sidebar-menu ul li:hover  {
+    color: #007bff;
+    transition: .2s ease-in-out;
+    font-size: 14px;
+  }
+  
+  .notification-count {
+    background-color: #007bff;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 5px;
+  }
+  
+  .sidebar-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-footer i {
+    margin: 5px 8px 0px 0px;
+  
+  
+  }
+  .sidebar-footer a {
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #575757;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  
+  .sidebar-footer a:hover {
+    color: #007bff;
+    transition: .2s ease-in-out;
+    font-size: 14px;
+  }
+ 
