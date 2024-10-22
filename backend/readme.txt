@@ -6,4 +6,9 @@ with app.app_context():
 
 
 
+
+    from app import db
+
+
+
 run this in pyton to migrate to db 

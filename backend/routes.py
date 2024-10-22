@@ -4,6 +4,8 @@ from models import User, Role, UserRole
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from utils import role_required
+from datetime import datetime
+
 
 auth_routes = Blueprint('auth', __name__)
 protected_routes = Blueprint('protected', __name__)
@@ -13,9 +15,9 @@ protected_routes = Blueprint('protected', __name__)
 def register():
     data = request.get_json()
 
-    # Validate incoming data
+    # # Validate incoming data
     if not all(k in data for k in ('username', 'password', 'email', 'role')):
-        return jsonify({"msg": "Missing required fields"}), 400
+        return jsonify({"msg": "Missing required fieldsbackend"}), 400
 
     # Check if the email or username is already taken
     if User.query.filter_by(email=data['email']).first():
@@ -26,9 +28,13 @@ def register():
 
     # Hash the password
     hashed_password = generate_password_hash(data['password'], method='pbkdf2:sha256')
-
-    # Create new user
-    new_user = User(username=data['username'], password_hash=hashed_password, email=data['email'])
+       # Create new user
+    new_user = User(
+        username=data['username'],
+        password_hash=hashed_password,
+        email=data['email'], 
+ 
+    )
     db.session.add(new_user)
     db.session.commit()
 
@@ -43,12 +49,15 @@ def register():
 
         # Include roles in the response
     user_roles = [role.role_name] if role else []  # Ensure it's an array
+    print(data)
+
     return jsonify({
         "id": new_user.id,
         "username": new_user.username,
         "email": new_user.email,
         "roles": user_roles,
-        "msg": "User registered successfully"
+        "msg": "User registered successfully",
+        
     }), 201
 
 
@@ -88,7 +97,9 @@ def get_all_users():
             'id': user.id,
             'username': user.username,
             'email': user.email,
-            'roles': [role.role.role_name for role in user.roles]  # Extract user roles
+            'roles': [role.role.role_name for role in user.roles],  # Extract user roles
+            'created_at': user.created_at,
+            'last_updated': user.updated_at
         })
 
     return jsonify(users_list), 200
@@ -143,3 +154,14 @@ def edit_user(user_id):
         db.session.commit()
 
     return jsonify({"msg": "User updated successfully"}), 200
+
+
+# Fetch all users (Admin only)
+@protected_routes.route('/roles', methods=['GET'])
+@jwt_required()
+@role_required('admin')
+
+def get_roles():
+    roles = Role.query.all()
+    roles_list = [{"id": role.id, "name": role.role_name} for role in roles]
+    return jsonify(roles_list), 200

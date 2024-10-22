@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import './UserManagement.css';
 import axios from 'axios';
+import Sidebar from '../Sidebar/Sidebar';
+import Header from '../Header/Header';
+import AddUserModal from '../AddUserModal/AddUserModal';
+import Modal from 'react-modal';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
-  const [newUser, setNewUser] = useState({ username: '', password: '', email: '', role: 'admin' });
   const [editUserId, setEditUserId] = useState(null);
   const [editRole, setEditRole] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.get('http://localhost:5000/api/users', {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       setUsers(response.data);
     } catch (error) {
@@ -26,39 +31,24 @@ const UserManagement = () => {
     fetchUsers();
   }, []);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewUser((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const handleAddUser = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:5000/UserManagement', newUser, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-      setUsers([...users, response.data]);
-      setNewUser({ username: '', password: '', email: '', role: 'admin' });
-    } catch (error) {
-      console.error('Error adding user:', error);
-    }
+  const handleAddUser = (user) => {
+    setUsers([...users, user]);
+    setShowModal(false); // Close modal after adding user
   };
 
   const handleRoleUpdate = async (userId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/users/${userId}/role`, { role: editRole }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json'
+      await axios.put(
+        `http://localhost:5000/api/users/${userId}/role`,
+        { role: editRole },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
+      );
       fetchUsers();
       setEditUserId(null);
     } catch (error) {
@@ -71,8 +61,8 @@ const UserManagement = () => {
       const token = localStorage.getItem('token');
       await axios.delete(`http://localhost:5000/api/users/${userId}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       fetchUsers();
     } catch (error) {
@@ -80,106 +70,136 @@ const UserManagement = () => {
     }
   };
 
+  const message = {
+    name: 'User Management',
+    subhead: 'Manage your team members and their account permissions here.',
+  };
 
+  const [sessionExpired, setSessionExpired] = useState(false);
+
+  const checkSession = async () => {
+    try {
+      const response = await fetch('/api/users', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      if (response.status === 401) {
+        setSessionExpired(true);
+      }
+    } catch (error) {
+      console.error('Error checking session', error);
+    }
+  };
+
+  useEffect(() => {
+    checkSession();
+  }, []);
+
+  const handleClose = () => {
+    setSessionExpired(false);
+    window.location.href = '/login';
+  };
+
+  const getRoleStyle = (role) => {
+    switch (role.toLowerCase()) {
+      case 'admin':
+        return { color: '#ff5722',  border: '1px solid #ff56229d', backgroundColor: '#ff562221' }; // Red color for Admin role
+      case 'operation':
+        return { backgroundColor:'#4caf4f21', color: '#4caf50', border: '1px solid #4caf4f80' }; // Blue color for Editor role
+      case 'accounts':
+        return { backgroundColor: '#03a8f421', color: '#03a9f4', border: '1px solid #03a8f45e' }; // Green color for Viewer role
+      default:
+        return { color: 'black' }; // Default black color for other roles
+    }
+  };
+  
 
   
+
   return (
-    <div className="user-management-container">
-      <h2>User Management</h2>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>
-            {user.username} ({user.email}) - Roles: {user.roles.join(', ')}
-          </li>
-        ))}
-      </ul>
+    <div>
+      <div className="container">
+        <Sidebar />
+        <main className="main-content">
+          <Header message={message} />
+          <div className="user-management">
+            <div className="controls">
+              <div className="usercount">
+                All users <span>{users.length}</span>
+              </div>
+              <div className="search-filters">
+                <div className="search-icon">
+                  <i className="fi fi-rr-search"></i>
+                </div>
+                <input type="text" className="search-bar" placeholder="Search" />
+                <button className="filter-btn">
+                  <i className="fi fi-rr-bars-filter"></i>&ensp;Filters
+                </button>
+                <button className="add-user-btn" onClick={() => setShowModal(true)}>
+                  +&ensp;Add User
+                </button>
+              </div>
+            </div>
 
-      <div className="add-user-form">
-        <h3>Add New User</h3>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={newUser.username}
-          onChange={handleInputChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={newUser.password}
-          onChange={handleInputChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={newUser.email}
-          onChange={handleInputChange}
-        />
-        <select name="role" value={newUser.role} onChange={handleInputChange}>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-          <option value="operation">Operation</option>
-        </select>
-        <button onClick={handleAddUser}>Add User</button>
+            <div className="table">
+              <table className="user-table">
+                <thead>
+                  <tr>
+                    <th><input type="checkbox" /></th>
+                    <th>User Name</th>
+                    <th>Access</th>
+                    <th>Last Updated</th>
+                    <th>Created at</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.map((user) => (
+                    <tr key={user.id}>
+                      <td><input type="checkbox" /></td>
+                      <td>{user.username}</td>
+                      <td>
+                        {user.roles.map((role, index) => (
+                          <span className="badge" key={index} style={getRoleStyle(role)}>
+                            {role}
+                            {index < user.roles.length - 1 && ' '}
+                          </span>
+                        ))}
+                      </td>
+               
+                      <td>{user.last_updated}</td>
+                      <td>{user.created_at}</td>
+                      <td><span className="more-options">...</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <AddUserModal
+            showModal={showModal}
+            closeModal={() => setShowModal(false)}
+            handleAddUser={handleAddUser}
+          />
+
+          <Modal
+            isOpen={sessionExpired}
+            onRequestClose={handleClose}
+            contentLabel="Session Expired"
+            ariaHideApp={false}
+          >
+            <h2>Session Expired</h2>
+            <p>Your session has expired. Please log in again.</p>
+            <button onClick={handleClose}>Go to Login</button>
+          </Modal>
+        </main>
       </div>
-
-      <table className="user-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Role</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.username}</td>
-       
-              <td>
-                {editUserId === user.id ? (
-                  <select value={editRole} onChange={(e) => setEditRole(e.target.value)}>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                    <option value="operation">Operation</option>
-                  </select>
-                ) : (
-                  // Ensure that user.roles is an array before calling .join
-                  user.roles && Array.isArray(user.roles) && user.roles.length > 0 ? user.roles.join(', ') : 'No Roles'
-                )}
-              </td>
-
-
-
-              <td>
-                {editUserId === user.id ? (
-                  <button onClick={() => handleRoleUpdate(user.id)}>Save</button>
-                ) : (
-                  <>
-                   {/* <button onClick={() => { setEditUserId(user.id); setEditRole(user.roles[0]); }}>Edit Role</button> */}
-                    <button onClick={() => { setEditUserId(user.id); setEditRole(user.roles && user.roles.length > 0 ? user.roles[0] : 'user'); }}>Edit Role</button>
-
-                    <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-                  </>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-     </div>
+    </div>
   );
 };
 
 export default UserManagement;
-
-
-
-
-
-
-

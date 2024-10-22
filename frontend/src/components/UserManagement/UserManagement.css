@@ -1,27 +1,129 @@
-.user-management-container {
-    padding: 20px;
-  }
-  
-  .add-user-form {
-    margin-bottom: 20px;
-  }
-  
-  .add-user-form input, .add-user-form select {
-    margin: 5px;
-  }
-  
-  .user-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .user-table th, .user-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .user-table th {
-    background-color: #f2f2f2;
-  }
-  
+
+
+/* Main Content Styling */
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+}
+
+
+
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.controls span {
+  color: #777;
+}
+
+.controls .search-filters {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.controls .search-filters .search-icon {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  color: #919191;
+}
+
+.controls .search-bar {
+  padding: 8px;
+  padding-left: 30px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent;
+  margin-right: 10px;
+  color:#919191; ;
+}
+
+.add-user-btn,
+.controls .filter-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.add-user-btn {
+  background-color: #000000;
+  color: white;
+  border: none;
+}
+
+.controls .filter-btn {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.user-table th,
+.user-table td {
+  padding: 6px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: 500;
+}
+
+.user-table th {
+  background-color: #ebebeb;
+}
+
+.user-table tbody tr:hover {
+  background-color: #d9d9da;
+}
+
+th {
+  background-color: #f4f4f4;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.table {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.badge {
+  padding: 1px 6px;
+  border-radius: 9px;
+  font-size: 10px;
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.badge.admin {
+  background-color: #ff562221;
+  color: #ff5722;
+  border: 1px solid #ff56229d;
+}
+
+.badge.data-export {
+
+}
+
+.badge.data-import {
+ 
+}

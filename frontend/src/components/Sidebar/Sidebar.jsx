@@ -11,7 +11,7 @@ import '@flaticon/flaticon-uicons/css/all/all.css';  // All icons
 
 function  Sidebar ()  {
     const [userRole, setUserRole] = useState(null);
-    const [username, setUsername] = useState(''); // State for storing the username
+    // const [username, setUsername] = useState(''); // State for storing the username
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,7 +22,7 @@ function  Sidebar ()  {
             const decodedToken = jwtDecode(token);
             const roles = decodedToken.sub.role; // Access roles from sub
             setUserRole(roles.length > 0 ? roles[0] : null); // Set the first role or null
-            setUsername(decodedToken.sub.username); // Extract the username from the token
+            // setUsername(decodedToken.sub.username); // Extract the username from the token
           } catch (error) {
             console.error('Error decoding token:', error);
           }
@@ -78,8 +78,8 @@ function  Sidebar ()  {
                 </ul>
             </nav>
             <div className="sidebar-footer">
-                <div><i className="fi fi-rr-settings"></i><a href="#">Settings</a></div>
-                <div><i className="fi fi-rr-document-signed"></i><a href="#">Documentation</a></div>
+                <div><i className="fi fi-rr-settings"></i><a href="/some/valid/uri">Settings</a></div>
+                <div><i className="fi fi-rr-document-signed"></i><a href="/some/valid/uri">Documentation</a></div>
             </div>
         </aside>
         
