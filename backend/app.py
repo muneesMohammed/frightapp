@@ -4,18 +4,19 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS  # Import CORS
 from config import Config
 from extensions import db, migrate  # Import the `db` and `migrate` instances
+from routes import auth_routes, protected_routes, admin_routes, user_routes
+
+
+
 
 # db = SQLAlchemy()
 
 def create_app():
     
     app = Flask(__name__)
-    CORS(app, resources={r"/*": {
-        "origins": "*",
-        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "allow_headers": ["Authorization", "Content-Type"],
-        "supports_credentials": True
-        }})
+    # CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+    CORS(app)
+
     app.config.from_object(Config)
    
     
@@ -33,6 +34,8 @@ def create_app():
         from routes import auth_routes, protected_routes
         app.register_blueprint(auth_routes)
         app.register_blueprint(protected_routes)
+        app.register_blueprint(user_routes)
+        app.register_blueprint(admin_routes)
 
         # Create all database tables
         db.create_all()

@@ -70,6 +70,7 @@
 
 .user-table {
   width: 100%;
+  /* min-height: 20vh; */
   border-collapse: collapse;
   background-color: white;
   border: 1px solid #e0e0e0;
@@ -89,11 +90,11 @@
   background-color: #ebebeb;
 }
 
+
 .user-table tbody tr:hover {
   background-color: #d9d9da;
 }
-
-th {
+thead {
   background-color: #f4f4f4;
   position: sticky;
   top: 0;
@@ -101,7 +102,7 @@ th {
 }
 
 .table {
-  max-height: 60vh;
+  max-height: 63vh;
   overflow-y: auto;
 }
 
@@ -126,4 +127,97 @@ th {
 
 .badge.data-import {
  
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown container */
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
+
+.dropdown-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  /* top: 100%; */
+  top: -5px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  /* width: 120px; */
+  z-index: 100;
+}
+
+.dropdown-item {
+  padding: 4px 15px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-item.delete {
+  color: #e74c3c;
+}
+
+.dropdown-item.delete:hover {
+  background-color: #fce4e4;
+}
+
+/* Responsive media query */
+@media (max-width: 600px) {
+  .dropdown-menu {
+    width: 100px;
+  }
+}
+
+
+
+
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.success-message {
+  color: green;
+  text-align: center;
+  margin: 10px 0;
 }

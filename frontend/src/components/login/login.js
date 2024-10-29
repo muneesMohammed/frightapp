@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function LoginForm() {
   const [username, setUsername] = useState('');
   // const [password, setPassword] = useState('');
-  const [password_hash, setPassword] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function LoginForm() {
     try {
       const response = await axios.post('http://localhost:5000/login', {
         username,
-        password_hash,
+        password,
       });
 
       const token = response.data.access_token;
@@ -59,7 +59,7 @@ function LoginForm() {
             <input
               type="password"
               id="password"
-              value={password_hash}
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
               disabled={loading}

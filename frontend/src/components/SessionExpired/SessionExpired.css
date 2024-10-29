@@ -1,0 +1,25 @@
+/* src/components/SessionExpired.css */
+.session-expired {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  .session-expired h1 {
+    font-size: 2em;
+    color: #ff0000;
+  }
+  
+  .session-expired p {
+    margin: 1em 0;
+  }
+  
+  .session-expired button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  

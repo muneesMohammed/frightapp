@@ -1,5 +1,6 @@
 import LoginForm from './components/login/login';
 import UserManagement from './components/UserManagement/UserManagement';
+import SessionExpired from './components/SessionExpired/SessionExpired';
 import './App.css';
 import React from 'react';
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/UserManagement" element={<UserManagement />} />
+        <Route path="/session-expired" element={<SessionExpired />} />
       </Routes>
     </Router>
   );

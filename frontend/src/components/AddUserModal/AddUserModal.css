@@ -52,7 +52,7 @@
 }
 
 /* Select dropdown */
-.modal-select {
+/* .modal-select {
   width: 90%;
   padding: 12px;
   margin-bottom: 15px;
@@ -66,7 +66,7 @@
 .modal-select:focus {
   border-color: #007bff;
   outline: none;
-}
+} */
 
 /* Modal actions: Add and Cancel buttons */
 .modal-actions {
@@ -76,7 +76,7 @@
 }
 
 /* Button styling */
-.modal-button {
+.modal-buttons {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -90,27 +90,25 @@
 
 
 
-.modal-button.add {
+.modal-buttons.add {
   background-color: #000000;
   color: white;
 }
 
-.modal-button.add:hover {
+.modal-buttons.add:hover {
   background-color: #ffffff;
   color: #000;
 border: 1px solid #ccc;
 }
 
-.modal-button.cancel {
-
-
+.modal-buttons.cancel {
 background-color: transparent;
 color: #000;
 border: 1px solid #ccc;
 margin-right: 10px;
 }
 
-.modal-button.cancel:hover {
+.modal-buttons.cancel:hover {
   background-color: #000000;
   color: #ffffff;
 }
@@ -121,7 +119,7 @@ margin-right: 10px;
     padding: 20px;
   }
 
-  .modal-button {
+  .modal-buttons {
     font-size: 14px;
     padding: 8px 16px;
   }

@@ -2,6 +2,10 @@ from app import db
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
+from datetime import datetime
+from flask_sqlalchemy import SQLAlchemy
+
+# db = SQLAlchemy()
 
 
 class User(db.Model):
@@ -37,3 +41,41 @@ class UserRole(db.Model):
 
     # Relationship to get the Role model data
     role = db.relationship('Role', backref='user_roles')
+
+
+
+
+
+
+# CRM MOdel
+
+
+
+
+
+# Define the Job Model
+class Job(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    job_id = db.Column(db.String(50), unique=True, nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customer.id'))
+    freight_type = db.Column(db.String(50))  # e.g., Air, Sea, Road
+    status = db.Column(db.String(50))        # e.g., Pending, In Transit, Delivered
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    # Other relevant job fields...
+
+# Function to generate Job ID
+def generate_job_id(freight_type):
+    current_date = datetime.now().strftime("%Y%m%d")  # E.g., 20241014
+    latest_job = Job.query.filter_by(freight_type=freight_type).order_by(Job.id.desc()).first()
+    
+    if latest_job:
+        # Increment the last job's numeric part
+        last_job_num = int(latest_job.job_id.split('-')[-1])
+        new_job_num = last_job_num + 1
+    else:
+        new_job_num = 1  # First job for the day
+
+    # Generate Job ID like "AIR-20241014-001"
+    return f"{freight_type}-{current_date}-{str(new_job_num).zfill(3)}"
+
+
