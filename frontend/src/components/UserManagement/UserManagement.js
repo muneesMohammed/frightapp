@@ -23,7 +23,7 @@ const UserManagement = () => {
     setServerError(""); // Reset error message
     try {
       const token = localStorage.getItem("token");
-      const response = await api.get("/all", {
+      const response = await api.get("users/all", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -3,7 +3,8 @@
 # services/auth_service.py
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
-from models import User, db
+from models import User
+from extensions import db  # Import db directly from extensions
 from datetime import datetime
 
 # def register_user(data):

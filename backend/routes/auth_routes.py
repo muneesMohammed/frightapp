@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash
 from marshmallow import Schema, fields, ValidationError
 
 # Initialize the Blueprint
-auth_routes = Blueprint('auth', __name__)
+auth_bp = Blueprint('auth', __name__)
 
 # Define a schema for input validation
 class LoginSchema(Schema):
@@ -15,7 +15,7 @@ class LoginSchema(Schema):
     password = fields.String(required=True)
 
 # Login route
-@auth_routes.route('/login', methods=['POST'])
+@auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
 

@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import "./Sidebar.css";
-// import userImage from '../../Assets/images/userImage.png';
-// Importing Flaticon UIcons in your React app
 import "@flaticon/flaticon-uicons/css/all/all.css"; // All icons
 
 function Sidebar() {
   const [userRole, setUserRole] = useState(null);
-  // const [username, setUsername] = useState(''); // State for storing the username
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,9 +14,8 @@ function Sidebar() {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        const roles = decodedToken.sub.role; // Access roles from sub
-        setUserRole(roles.length > 0 ? roles[0] : null); // Set the first role or null
-        // setUsername(decodedToken.sub.username); // Extract the username from the token
+        const roles = decodedToken.sub.role;
+        setUserRole(roles.length > 0 ? roles[0] : null);
       } catch (error) {
         console.error("Error decoding token:", error);
       }
@@ -29,11 +25,35 @@ function Sidebar() {
   const handleUserManagement = () => {
     navigate("/UserManagement");
   };
+  const handleDashboard = () => {
+    navigate("/dashboard");
+  };
+
   // List of services based on user roles
   const services = [
-    { name: "Dashboard", icon: "fi fi-rr-dashboard-panel" },
-    { name: "Finance", icon: "fi fi-rr-usd-circle" },
-    { name: "CRM", icon: "fi fi-rr-target-audience" },
+    {
+      name: "Dashboard",
+      icon: "fi fi-rr-dashboard-panel",
+      onClick: handleDashboard,
+    },
+    {
+      name: "Finance",
+      icon: "fi fi-rr-usd-circle",
+      subItems: [
+        { name: "Invoicing", link: "/Invoicing" },
+        { name: "Charge Management", link: "/Charge Management" },
+        { name: "Accounting", link: "/Accounting" },
+      ],
+    },
+    {
+      name: "CRM",
+      icon: "fi fi-rr-target-audience",
+      subItems: [
+        { name: "Quotation", link: "/quotation" },
+        { name: "Customer Management", link: "/customer-management" },
+        { name: "Booking Enquiry", link: "/booking-enquiry" },
+      ],
+    },
     { name: "Air", icon: "fi fi-rr-plane-departure" },
     { name: "Ocean", icon: "fi fi-rr-ship" },
     { name: "Land", icon: "fi fi-rr-truck-check" },
@@ -57,12 +77,11 @@ function Sidebar() {
             onClick: handleUserManagement,
           },
         ]
-      : []), // Add User Management if admin
+      : []),
   ];
 
   return (
     <div>
-      {/* Sidebar  */}
       <aside className="sidebar">
         <div className="sidebar-header">
           <h1 className="app-name">Freight Management</h1>
@@ -71,14 +90,31 @@ function Sidebar() {
         <nav className="sidebar-menu">
           <ul className="services-list">
             {services.map((service, index) => (
-              <li
-                key={index}
-                onClick={service.onClick ? service.onClick : null} // Add onClick if available
-                className={service.onClick ? "clickable" : ""} // Add class for styling clickable items
-              >
-                <i className={service.icon}></i>
-                {service.name}
-                <span className={service.badge}>{service.count}</span>
+              <li key={index} className="service-item">
+                <div
+                  onClick={service.onClick ? service.onClick : null}
+                  className="clickable"
+                >
+                  <i className={service.icon}></i>
+                  {service.name}
+                  <span className={service.badge}>{service.count}</span>
+                  {service.subItems && (
+                    <i className="dropdown-icon fi fi-rr-angle-small-down"></i>
+                  )}
+                </div>
+                {service.subItems && (
+                  <ul className="dropdown-menu">
+                    {service.subItems.map((subItem, subIndex) => (
+                      <li
+                        key={subIndex}
+                        onClick={() => navigate(subItem.link)}
+                        className="dropdown-item"
+                      >
+                        {subItem.name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
@@ -86,11 +122,11 @@ function Sidebar() {
         <div className="sidebar-footer">
           <div>
             <i className="fi fi-rr-settings"></i>
-            <a href="/some/valid/uri">Settings</a>
+            <a href="/settings">Settings</a>
           </div>
           <div>
             <i className="fi fi-rr-document-signed"></i>
-            <a href="/some/valid/uri">Documentation</a>
+            <a href="/documentation">Documentation</a>
           </div>
         </div>
       </aside>

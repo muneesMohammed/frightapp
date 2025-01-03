@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./AddUserModal.css"; // Make sure to set the z-index here
 import axios from "axios";
 
-function AddUserModal({ showModal, closeModal, handleAddUser, user, isEditMode }) {
+function AddUserModal({
+  showModal,
+  closeModal,
+  handleAddUser,
+  user,
+  isEditMode,
+}) {
   const [newUser, setNewUser] = useState({
     username: "",
     password: "",
@@ -20,7 +26,7 @@ function AddUserModal({ showModal, closeModal, handleAddUser, user, isEditMode }
       setLoading(true);
       setServerError(""); // Reset server error message
       try {
-        const response = await axios.get("http://localhost:5000/roles", {
+        const response = await axios.get("http://localhost:5000/users/roles", {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         setRoles(response.data);

@@ -1,48 +1,26 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
-from flask_cors import CORS  # Import CORS
+from flask_cors import CORS
 from config import Config
-from extensions import db, migrate  # Import the `db` and `migrate` instances
-from routes import auth_routes, protected_routes, admin_routes, user_routes
-
-
-
-
-# db = SQLAlchemy()
+from extensions import db, migrate
+from routes import main_bp
 
 def create_app():
-    
     app = Flask(__name__)
-    # CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-    CORS(app)
-
     app.config.from_object(Config)
-   
-    
+
+    # Initialize extensions
+    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
     db.init_app(app)
     migrate.init_app(app, db)
     jwt = JWTManager(app)
 
-    # Initialize CORS and allow requests from your React frontend
-    # CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-
+    # Import models to ensure tables are registered with SQLAlchemy
     with app.app_context():
-        from models import User, Role, UserRole
-        db.create_all()  # Create tables if they don't exist
-        # Import and register routes
-        from routes import auth_routes, protected_routes
-        app.register_blueprint(auth_routes)
-        app.register_blueprint(protected_routes)
-        app.register_blueprint(user_routes)
-        app.register_blueprint(admin_routes)
-
-        # Create all database tables
-        db.create_all()
+        from models import user_model, crm_model  # Ensure models are correctly structured
+        app.register_blueprint(main_bp)  # Register main blueprint
 
     return app
-
-
 
 if __name__ == '__main__':
     app = create_app()

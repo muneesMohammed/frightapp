@@ -5,15 +5,15 @@ from utils.decorators import role_required
 from services.user_service import delete_user, edit_user, register_user
 
 
-admin_routes = Blueprint('admin', __name__)
+admin_bp = Blueprint('admin', __name__)
 
-@admin_routes.route('/users/<int:user_id>', methods=['DELETE'])
+@admin_bp.route('/users/<int:user_id>', methods=['DELETE'])
 @jwt_required()
 @role_required('admin')
 def delete_user_route(user_id):
     return delete_user(user_id)
 
-@admin_routes.route('/users/<int:user_id>', methods=['PUT'])
+@admin_bp.route('/users/<int:user_id>', methods=['PUT'])
 @jwt_required()
 @role_required('admin')
 def edit_user_route(user_id):
@@ -23,7 +23,7 @@ def edit_user_route(user_id):
 
 
 
-@admin_routes.route('/register', methods=['POST'])
+@admin_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
     return register_user(data)

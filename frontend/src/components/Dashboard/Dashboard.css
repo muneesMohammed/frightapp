@@ -1,16 +1,79 @@
-/* General Reset */
 
-/* 
-.dashboard-container {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  background-color: #f4f5f7;
-  color: #333;
-} */
 
 .container {
   display: flex;
 }
+
+
+
+.dashboard-body {
+  background-color: #f4f6f8;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  min-height: 70vh;
+}
+
+/* Dashboard grid layout */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Card styling */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card h4 {
+  font-size: 1em;
+  color: #7e7e7e;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card p {
+  font-size: 2em;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .dashboard {
+      grid-template-columns: 1fr;
+      gap: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

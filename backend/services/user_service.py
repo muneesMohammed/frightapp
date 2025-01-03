@@ -1,7 +1,7 @@
 # services/user_service.py
 
 from flask import jsonify  # Make sure this import is present
-from models import User, Role, UserRole, db  # Import your User model
+from models import User, Role, UserRole  # Import your User model
 from extensions import db  # Ensure you have access to the db instance
 from werkzeug.security import generate_password_hash
 
