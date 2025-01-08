@@ -1,12 +1,17 @@
-import LoginForm from './components/login/login';
-import UserManagement from './components/UserManagement/UserManagement';
-import SessionExpired from './components/SessionExpired/SessionExpired';
-import './App.css';
-import React from 'react';
+import LoginForm from "./components/login/login";
+import UserManagement from "./components/UserManagement/UserManagement";
+import SessionExpired from "./components/SessionExpired/SessionExpired";
+import "./App.css";
+import React from "react";
 
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Dashboard from './components/Dashboard/Dashboard';
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Dashboard from "./components/Dashboard/Dashboard";
+import QuotationForm from "./components/CRM/Quotation/QuotationForm";
 
 function App() {
   return (
@@ -17,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/UserManagement" element={<UserManagement />} />
         <Route path="/session-expired" element={<SessionExpired />} />
+        <Route path="/QuotationForm" element={<QuotationForm />} />
       </Routes>
     </Router>
   );

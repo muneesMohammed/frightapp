@@ -1,0 +1,106 @@
+[
+
+    {
+        "title":"Dashboard",
+        "icon": "fi fi-rr-dashboard-panel",
+        "path": "/dashboard"
+    },
+ 
+    {
+        "title": "Finance",
+        "icon": "fi fi-rr-usd-circle",
+        "childrens": [
+            {
+                "title": "Invoicing",
+                "path": "/Invoicing"
+            },
+            {
+                "title": "Charge Management",
+                "path": "/Charge Management"
+            },
+            {
+                "title": "Accounting",
+                "path": "/Accounting"
+            }
+
+        ]
+    },
+    
+    {
+        "title": "CRM",
+        "icon": "fi fi-rr-target-audience",
+        "childrens": [
+            {
+                "title": "Quotation",
+                "path": "/QuotationForm"
+            },
+            {
+                "title": "Customer Management",
+                "path": "/customer-management"
+            },
+            {
+                "title": "Booking Enquiry",
+                "path": "/booking-enquiry"
+            }
+        ]
+    },
+  
+    {
+        "title": "Air",
+        "icon": "fi fi-rr-plane-departure",
+        "path": "/Air"
+    },
+    {
+        "title": "Ocean",
+        "icon": "fi fi-rr-ship",
+        "path": "/Ocean"
+    },
+    {
+        "title": "Land",
+        "icon": "fi fi-rr-truck-check",
+        "path": "/Land"
+    },
+    {
+        "title": "Sales",
+        "icon": "fi fi-rr-benefit-porcent",
+        "path": "/Sales"
+    },
+    {
+        "title": "Notifications",
+        "icon": "fi fi-rr-envelope-dot",
+        "badge": "notification-count",
+        "count": 40
+    },
+    
+    {
+        "title": "User Management",
+        "icon": "fi fi-rr-users-gear",
+        "path": "/UserManagement"
+    },
+    {
+        "title": "Security & Access",
+        "icon": "fi fi-rr-user-key",
+        "path": "/Security & Access"
+    },
+    {
+        "title": "Payments",
+        "icon": "fi fi-rr-payroll-check",
+        "path": "/Payments"
+    },
+    {
+        "title": "Import Data",
+        "icon": "fi fi-rr-cloud-download",
+        "path": "/Import Data"
+    },
+    {
+        "title": "Export Data",
+        "icon": "fi fi-rr-cloud-upload",
+        "path": "/Export Data"
+    },
+    {
+        "title": "Database",
+        "icon": "fi fi-rr-back-up",
+        "path": "/Database"
+    }
+    
+]

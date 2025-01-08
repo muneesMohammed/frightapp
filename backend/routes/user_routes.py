@@ -18,6 +18,7 @@ def get_all_users_route():
 @role_required('admin')
 def get_roles():
     return get_all_roles()
+    
  
 
 

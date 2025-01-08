@@ -1,0 +1,187 @@
+/* General Styling */
+  
+  /* Form Container */
+  .quotation-form {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    /* max-width: 600px; */
+    margin: 20px;
+    box-sizing: border-box;
+    max-width: 800px;
+    margin: 0 auto;
+   
+  }
+  
+  /* Form Header */
+  /* .quotation-form h3 {
+    margin-bottom: 15px;
+    color: #4a90e2;
+    text-align: center;
+  } */
+
+  /* Input Fields */
+  .quotation-form input[type="text"],
+  .quotation-form input[type="number"],
+  .quotation-form input[type="date"],
+  .quotation-form select,
+  .quotation-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 12px;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Input Focus Effect */
+  .quotation-form input:focus,
+  .quotation-form select:focus,
+  .quotation-form textarea:focus {
+    border-color: #4a90e2;
+    outline: none;
+  }
+  
+  /* Textarea */
+  .quotation-form textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  /* Submit Button */
+  /* .quotation-form button {
+    background-color: #4a90e2;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  } */
+  
+  .quotation-form button:hover {
+    background-color: #357ab7;
+  }
+  
+  /* Form Sections */
+  .quotation-form h3 {
+    border-bottom: 2px solid #f4f4f9;
+    padding-bottom: 5px;
+    margin-top: 20px;
+  }
+
+
+  
+  
+  /* Stepper */
+  .stepper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .step {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px;
+    /* font-weight: bold; */
+    color: #ccc;
+    border-bottom: 2px solid #ccc;
+    position: relative;
+  }
+  
+  .step.active {
+    color: #000000;
+    border-bottom-color: #000000;
+  }
+  
+  .step.active::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #000000;
+    border-radius: 50%;
+  }
+  
+  /* Form Styling */
+  .quotation-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+  
+ 
+  
+  .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navigation-buttons button {
+    /* padding: 10px 20px; */
+    border: none;
+    background-color: #000000;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  
+  .navigation-buttons button:hover {
+    background-color: #454546;
+  }
+  
+  .inline-fields {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between items */
+    gap: 10px; /* Add space between the fields */
+  }
+  
+  .inline-fields label {
+    flex: 1; /* Make the fields take equal width */
+    display: flex;
+    flex-direction: column; /* Ensure label and input stack properly */
+  }
+  .inline-fields .form-group input[type="text"],
+  .inline-fields .form-group input[type="number"] {
+    width: 300px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .quotation-form {
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .quotation-form {
+      padding: 10px;
+    }
+  
+    .quotation-form h2,
+    .quotation-form h3 {
+      font-size: 18px;
+    }
+  }
+  
+
+
+  
+
+
+
+

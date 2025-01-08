@@ -4,7 +4,7 @@ import "./UserManagement.css";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
 import AddUserModal from "../AddUserModal/AddUserModal";
-import api from '../../utils/axios';
+import api from "../../utils/axios";
 import TimeConverter from "../Timestamp/Timestamp";
 // import axios from "axios";
 
@@ -57,7 +57,7 @@ const UserManagement = () => {
         setSuccessMessage("User updated successfully!");
       } else {
         // Add a new user
-        await api.post("/register", newUser, {
+        await api.post("/admin/register", newUser, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -145,7 +145,11 @@ const UserManagement = () => {
                 <div className="search-icon">
                   <i className="fi fi-rr-search"></i>
                 </div>
-                <input type="text" className="search-bar" placeholder="Search" />
+                <input
+                  type="text"
+                  className="search-bar"
+                  placeholder="Search"
+                />
                 <button className="filter-btn">
                   <i className="fi fi-rr-bars-filter"></i>&ensp;Filters
                 </button>
@@ -159,7 +163,9 @@ const UserManagement = () => {
             </div>
 
             {serverError && <p className="error-message">{serverError}</p>}
-            {successMessage && <p className="success-message">{successMessage}</p>}
+            {successMessage && (
+              <p className="success-message">{successMessage}</p>
+            )}
 
             <div className="table">
               <table className="user-table">
@@ -178,7 +184,9 @@ const UserManagement = () => {
                 <tbody>
                   {loading ? (
                     <tr>
-                      <td colSpan="6" style={{ textAlign: "center" }}>Loading...</td>
+                      <td colSpan="6" style={{ textAlign: "center" }}>
+                        Loading...
+                      </td>
                     </tr>
                   ) : (
                     users.map((user) => (

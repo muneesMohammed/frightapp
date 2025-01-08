@@ -8,6 +8,8 @@ from .customers_routes import customers_bp
 from .shipments_routes import shipments_bp
 from .invoices_routes import invoices_bp
 from .interactions_routes import interactions_bp
+from .quotation_routes import quotation_bp
+
 
 # Create a CRM blueprint
 crm_bp = Blueprint('crm', __name__)
@@ -18,3 +20,9 @@ crm_bp.register_blueprint(customers_bp, url_prefix='/customers')
 crm_bp.register_blueprint(shipments_bp, url_prefix='/shipments')
 crm_bp.register_blueprint(invoices_bp, url_prefix='/invoices')
 crm_bp.register_blueprint(interactions_bp, url_prefix='/interactions')
+crm_bp.register_blueprint(quotation_bp, url_prefix='/quotation')
+
+
+
+
+

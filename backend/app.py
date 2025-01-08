@@ -8,9 +8,9 @@ from routes import main_bp
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
-
+    CORS(app)  
     # Initialize extensions
-    CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+    # CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
     db.init_app(app)
     migrate.init_app(app, db)
     jwt = JWTManager(app)
